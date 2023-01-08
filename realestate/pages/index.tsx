@@ -1,9 +1,10 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { Property } from "../components/Property";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import { getPropertyListForRent, getPropertyListForSale } from "../utils/propertiesList";
-import { ListPropertiesResponse, Property } from "./types";
+import { ListPropertiesResponse, IProperty } from "./types";
 
 type BannerProps = {
   purpose: string;
@@ -51,8 +52,8 @@ function Banner({
 }
 
 type HomeProps = {
-  propertiesForSale: Property[]
-  propertiesForRent: Property[]
+  propertiesForSale: IProperty[]
+  propertiesForRent: IProperty[]
 }
 
 export default function Home({ propertiesForSale, propertiesForRent } : HomeProps) {
@@ -70,7 +71,9 @@ export default function Home({ propertiesForSale, propertiesForRent } : HomeProp
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
       />
       <Flex flexWrap={"wrap"}>
-        {/* Fetch the properties and map over them... */}
+        {propertiesForRent.map((property) => (
+          <Property key={property.id} property={property}/>
+        ))}
       </Flex>
       <Banner
         purpose="BUY A HOME"
@@ -83,7 +86,9 @@ export default function Home({ propertiesForSale, propertiesForRent } : HomeProp
         imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
       />
       <Flex flexWrap={"wrap"}>
-        {/* Fetch the properties and map over them... */}
+        {propertiesForSale.map((property) => (
+          <Property key={property.id} property={property}/>
+        ))}
       </Flex>
     </Box>
   );
