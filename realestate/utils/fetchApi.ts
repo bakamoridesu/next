@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ListPropertiesResponse } from "../pages/types";
 
 export const baseUrl = "https://bayut.p.rapidapi.com";
 
