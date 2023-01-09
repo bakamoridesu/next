@@ -13,7 +13,7 @@ type TPropertyProps = {
 };
 
 export const Property = ({ property }: TPropertyProps) => (
-  <div>
+  <Link href={`/property/${property.externalID}`} passHref>
     <Flex
       flexWrap={"wrap"}
       w="420px"
@@ -22,17 +22,16 @@ export const Property = ({ property }: TPropertyProps) => (
       justifyContent="flex-start"
       cursor="pointer"
     >
-      <Link href={`/property/${property.externalID}`} passHref>
-        <Box>
-          <Image
-            src={property.coverPhoto ? property.coverPhoto.url : defaultImage}
-            alt="house"
-            width={400}
-            height={260}
-            style={{ height: "260px" }}
-          />
-        </Box>
-      </Link>
+      <Box>
+        <Image
+          src={property.coverPhoto ? property.coverPhoto.url : defaultImage}
+          alt="house"
+          width={400}
+          height={260}
+          style={{ height: "260px" }}
+        />
+      </Box>
+
       <Box w="full">
         <Flex paddingTop={2} alignItems="center" justifyContent="space-between">
           <Flex alignItems="center">
@@ -48,7 +47,7 @@ export const Property = ({ property }: TPropertyProps) => (
             <Avatar size="sm" src={property.agency?.logo?.url} />
           </Box>
         </Flex>
-        <Flex gap={4}>
+        <Flex gap={2} alignItems="center" p="1" justifyContent="space-between" w="250px" color="blue.400" >
           {property.rooms} <FaBed /> | {property.baths} <FaBath /> |{" "}
           {millify(property.area)} sqft <BsGridFill />
         </Flex>
@@ -59,7 +58,5 @@ export const Property = ({ property }: TPropertyProps) => (
         </Text>
       </Box>
     </Flex>
-
-    <br />
-  </div>
+  </Link>
 );
