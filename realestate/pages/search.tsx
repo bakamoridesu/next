@@ -60,7 +60,7 @@ const Search = ({ properties }) => {
 
 export default Search;
 
-type TQuery = {
+export type TQuery = {
   purpose: string;
   rentFrequency: string;
   minPrice: string;
