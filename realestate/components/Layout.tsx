@@ -2,6 +2,7 @@ import { Box } from "@chakra-ui/react";
 import Head from "next/head";
 import { ReactElement } from "react";
 import { Navbar } from "./Navbar";
+import { Footer } from "./Footer";
 
 type LayoutProps = {
     children: ReactElement
@@ -20,7 +21,7 @@ export const Layout = ({ children }: LayoutProps) => (
                 {children}
             </main>
             <footer>
-                Footer
+                <Footer />
             </footer>
         </Box>
     </>
