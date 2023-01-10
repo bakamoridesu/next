@@ -8,7 +8,7 @@ import Image from "next/image";
 import noResult from "../assets/images/noresult.svg";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
-import { IProperty } from "./types";
+import { IProperty } from "../components/types";
 
 const Search = ({ properties }) => {
   const [searchFilters, setSearchFilters] = useState(false);

@@ -1,7 +1,7 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import Link from "next/link";
-import { IProperty } from "../pages/types";
+import { IProperty } from "./types";
 import { GoVerified } from "react-icons/go";
 import { BsGridFill } from "react-icons/bs";
 import { FaBed, FaBath } from "react-icons/fa";

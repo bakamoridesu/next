@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Property } from "../components/Property";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import { getPropertyListForRent, getPropertyListForSale } from "../utils/propertiesList";
-import { ListPropertiesResponse, IProperty } from "./types";
+import { ListPropertiesResponse, IProperty } from "../components/types";
 
 type BannerProps = {
   purpose: string;
