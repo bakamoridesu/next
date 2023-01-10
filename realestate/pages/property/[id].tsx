@@ -63,6 +63,7 @@ const PropertyDetails = ({
           </Text>
         </Flex>
         <Box>
+          <Avatar size="sm" src={agency?.logo?.url} />
         </Box>
       </Flex>
     </Box>
