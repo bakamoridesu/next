@@ -1,4 +1,5 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
+import millify from "millify";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
 import { ParsedUrlQuery } from "querystring";
@@ -51,9 +52,18 @@ const PropertyDetails = ({
   <Box maxWidth="1000px" margin="auto" p="4">
     {photos && <ImageScrollBar data={photos} />}
     <Box w="full" p="6">
-      <Flex paddingTop="2" alignItems="center">
-        <Box paddingRight="3" color="green.400">
-            {isVerified && <GoVerified/>}
+      <Flex paddingTop={2} alignItems="center" justifyContent="space-between">
+        <Flex alignItems="center">
+          <Box paddingRight="3" color={"green.400"}>
+            {isVerified && <GoVerified />}
+          </Box>
+          <Text fontWeight="bold" fontSize="lg">
+            AED {millify(price)}
+            {rentFrequency && `/${rentFrequency}`}
+          </Text>
+        </Flex>
+        <Box>
+          <Avatar size="sm" src={agency?.logo?.url} />
         </Box>
       </Flex>
     </Box>
