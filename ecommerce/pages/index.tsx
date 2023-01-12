@@ -4,6 +4,7 @@ import { HeroBanner } from "../components/HeroBanner";
 import { Product } from "../components/Product";
 import { IProduct } from "../types/product";
 import { client } from "../lib/client";
+import { IBanner } from "../types/banner";
 
 const Home = ({
   products,
@@ -13,7 +14,7 @@ const Home = ({
   console.log({ products });
   return (
     <>
-      <HeroBanner />
+      <HeroBanner heroBanner={banners.length && banners[0]}/>
       <div className="products-heading">
         <h2>Best selling products</h2>
         <p>Speakers of many variations</p>
@@ -28,7 +29,7 @@ const Home = ({
 
 type Data = {
   products: IProduct[];
-  banners: any[];
+  banners: IBanner[];
 };
 
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
@@ -36,7 +37,7 @@ export const getServerSideProps: GetServerSideProps<Data> = async () => {
   const products = await client.fetch(productsQuery) as IProduct[];
 
   const bannerQuery = '*[_type == "banner"]';
-  const banners = await client.fetch(bannerQuery);
+  const banners = await client.fetch(bannerQuery) as IBanner[];
 
   return {
     props: {
