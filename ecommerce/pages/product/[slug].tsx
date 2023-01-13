@@ -10,19 +10,22 @@ import {
   AiOutlinePlus,
   AiOutlineStar,
 } from "react-icons/ai";
+import { Product } from "../../components/Product";
+import { useState } from "react";
 const ProductDetails = ({
   product: { image, name, price, details },
   similarProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const imageProps = useNextSanityImage(client, image[0]);
+  const [index, setIndex] = useState(0);
+  const imageProps = useNextSanityImage(client, image[index]);
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <Image {...imageProps} alt={name} />
+            <Image {...imageProps} alt={name} className="product-detail-image"/>
           </div>
-          {/* <div className="small-images-container">
+          <div className="small-images-container">
             {image?.map((item, i) => (
               <Image
                 key={i}
@@ -30,9 +33,13 @@ const ProductDetails = ({
                 height={200}
                 src={urlFor(item).width(200).url()}
                 alt="product"
+                className={
+                  i === index ? "small-image selected-image" : "small-image"
+                }
+                onMouseEnter={() => setIndex(i)}
               />
             ))}
-          </div> */}
+          </div>
         </div>
 
         <div className="product-detail-desc">
@@ -73,7 +80,16 @@ const ProductDetails = ({
         </div>
       </div>
 
-      
+      <div className="maylike-products-wrapper">
+        <h2>You may also like</h2>
+        <div className="marquee">
+          <div className="maylike-products-container track">
+            {similarProducts.map((product) => (
+              <Product product={product} key={product._id} />
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
