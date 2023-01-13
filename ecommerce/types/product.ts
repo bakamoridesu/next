@@ -6,13 +6,13 @@ export interface IProduct {
     _type:      string;
     _updatedAt: string;
     details:    string;
-    image:      Image[];
+    image:      IImage[];
     name:       string;
     price:      number;
     slug:       Slug;
 }
 
-export interface Image {
+export interface IImage {
     _key:  string;
     _type: string;
     asset: Asset;

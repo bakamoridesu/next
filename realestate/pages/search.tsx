@@ -6,11 +6,13 @@ import { SearchFilters } from "../components/SearchFilters";
 import { Property } from "../components/Property";
 import Image from "next/image";
 import noResult from "../assets/images/noresult.svg";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { baseUrl, fetchApi } from "../utils/fetchApi";
 import { IProperty } from "../components/types";
 
-const Search = ({ properties }) => {
+type SearchProps = {
+  properties: IProperty[]
+}
+const Search = ({ properties }: SearchProps) => {
   const [searchFilters, setSearchFilters] = useState(false);
   const router = useRouter();
 
