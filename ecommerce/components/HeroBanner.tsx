@@ -9,6 +9,7 @@ type Props = {
   heroBanner: IBanner;
 };
 export const HeroBanner = ({ heroBanner }: Props) => {
+  if(!heroBanner) return null
   const imageProps = useNextSanityImage(client, heroBanner.image);
   return (
     <div className="hero-banner-container">

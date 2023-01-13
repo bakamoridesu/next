@@ -14,13 +14,15 @@ const Home = ({
   console.log({ products });
   return (
     <>
-      <HeroBanner heroBanner={banners.length && banners[0]}/>
+      <HeroBanner heroBanner={banners[0]} />
       <div className="products-heading">
         <h2>Best selling products</h2>
         <p>Speakers of many variations</p>
       </div>
       <div className="products-container">
-        {products.map((product) => product.name)}
+        {products.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
       </div>
       <FooterBanner />
     </>
@@ -34,10 +36,10 @@ type Data = {
 
 export const getServerSideProps: GetServerSideProps<Data> = async () => {
   const productsQuery = '*[_type == "product"]';
-  const products = await client.fetch(productsQuery) as IProduct[];
+  const products = (await client.fetch(productsQuery)) as IProduct[];
 
   const bannerQuery = '*[_type == "banner"]';
-  const banners = await client.fetch(bannerQuery) as IBanner[];
+  const banners = (await client.fetch(bannerQuery)) as IBanner[];
 
   return {
     props: {
