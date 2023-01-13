@@ -4,7 +4,12 @@ import Image from "next/image";
 import { client, urlFor } from "../../lib/client";
 import { ParsedUrlQuery } from "querystring";
 import { IProduct } from "../../types/product";
-
+import {
+  AiFillStar,
+  AiOutlineMinus,
+  AiOutlinePlus,
+  AiOutlineStar,
+} from "react-icons/ai";
 const ProductDetails = ({
   product: { image, name, price, details },
   similarProducts,
@@ -17,7 +22,7 @@ const ProductDetails = ({
           <div className="image-container">
             <Image {...imageProps} alt={name} />
           </div>
-          <div className="small-images-container">
+          {/* <div className="small-images-container">
             {image?.map((item, i) => (
               <Image
                 key={i}
@@ -27,9 +32,48 @@ const ProductDetails = ({
                 alt="product"
               />
             ))}
+          </div> */}
+        </div>
+
+        <div className="product-detail-desc">
+          <h1>{name}</h1>
+          <div className="reviews">
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiFillStar />
+            <AiOutlineStar />
+          </div>
+          <p>{20}</p>
+          <h4>Details:</h4>
+          <p>{details}</p>
+          <p className="price">${price}</p>
+          <div className="quantity">
+            <h3>Quantity:</h3>
+            <p className="quantity-desc">
+              <span className="minus" onClick={() => {}}>
+                <AiOutlineMinus />
+              </span>
+              <span className="num" onClick={() => {}}>
+                0
+              </span>
+              <span className="plus" onClick={() => {}}>
+                <AiOutlinePlus />
+              </span>
+            </p>
+          </div>
+          <div className="buttons">
+            <button type="button" className="add-to-cart" onClick={() => {}}>
+              Add to Cart
+            </button>
+            <button type="button" className="buy-now" onClick={() => {}}>
+              Buy Now
+            </button>
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 };
