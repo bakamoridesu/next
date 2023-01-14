@@ -12,12 +12,15 @@ import {
 } from "react-icons/ai";
 import { Product } from "../../components/Product";
 import { useState } from "react";
+import { useStateContext } from "../../context/StateContext";
 const ProductDetails = ({
-  product: { image, name, price, details },
+  product,
   similarProducts,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { image, name, price, details } = product
   const [index, setIndex] = useState(0);
   const imageProps = useNextSanityImage(client, image[index]);
+  const { increaseQuantity, decreaseQuantity, quantity, onAdd } = useStateContext();
   return (
     <div>
       <div className="product-detail-container">
@@ -58,19 +61,19 @@ const ProductDetails = ({
           <div className="quantity">
             <h3>Quantity:</h3>
             <p className="quantity-desc">
-              <span className="minus" onClick={() => {}}>
+              <span className="minus" onClick={() => decreaseQuantity()}>
                 <AiOutlineMinus />
               </span>
-              <span className="num" onClick={() => {}}>
-                0
+              <span className="num">
+                {quantity}
               </span>
-              <span className="plus" onClick={() => {}}>
+              <span className="plus" onClick={() => increaseQuantity()}>
                 <AiOutlinePlus />
               </span>
             </p>
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart" onClick={() => {}}>
+            <button type="button" className="add-to-cart" onClick={() => onAdd(product, quantity)}>
               Add to Cart
             </button>
             <button type="button" className="buy-now" onClick={() => {}}>
