@@ -23,6 +23,7 @@
     "stripe": "^11.6.0"
   },
   "devDependencies": {
+    "@types/canvas-confetti": "^1.6.0",
     "@types/react": "18.0.26",
     "eslint": "8.31.0",
     "eslint-config-airbnb": "^19.0.4",

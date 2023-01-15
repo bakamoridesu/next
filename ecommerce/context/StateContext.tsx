@@ -18,6 +18,7 @@ type AppContextType = {
   onAdd: (product: IProduct, quantity: number) => void;
   toggleCartItemQuantity: (id: string, value: string) => void;
   removeProduct: (id: string) => void;
+  clearCart: () => void;
 };
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -116,6 +117,12 @@ export const StateContext = ({ children }: Props) => {
     setTotalQuantities((totalQuantities) => totalQuantities - foundProduct.quantity);
   };
 
+  const clearCart = () => {
+    setCartItems([])
+    setTotalPrice(0)
+    setTotalQuantities(0)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -130,6 +137,7 @@ export const StateContext = ({ children }: Props) => {
         setShowCart,
         toggleCartItemQuantity,
         removeProduct,
+        clearCart,
       }}
     >
       {children}
