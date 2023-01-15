@@ -20,7 +20,13 @@ const ProductDetails = ({
   const { image, name, price, details } = product
   const [index, setIndex] = useState(0);
   const imageProps = useNextSanityImage(client, image[index]);
-  const { increaseQuantity, decreaseQuantity, quantity, onAdd } = useStateContext();
+  const { increaseQuantity, decreaseQuantity, quantity, onAdd, setShowCart } = useStateContext();
+
+  const handleBuyNow = () => {
+    onAdd(product, quantity)
+    setShowCart(true)
+  }
+
   return (
     <div>
       <div className="product-detail-container">
@@ -76,7 +82,7 @@ const ProductDetails = ({
             <button type="button" className="add-to-cart" onClick={() => onAdd(product, quantity)}>
               Add to Cart
             </button>
-            <button type="button" className="buy-now" onClick={() => {}}>
+            <button type="button" className="buy-now" onClick={() => handleBuyNow()}>
               Buy Now
             </button>
           </div>
