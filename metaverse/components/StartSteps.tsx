@@ -4,4 +4,4 @@ const StartSteps = () => (
   </div>
 );
 
-export default StartSteps;
+export default StartSteps

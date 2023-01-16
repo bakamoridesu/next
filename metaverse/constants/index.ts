@@ -1,4 +1,10 @@
-export const exploreWorlds = [
+type TWorld = {
+  id: string
+  imgUrl: string
+  title: string
+}
+
+export const exploreWorlds: TWorld[] = [
   {
     id: 'world-1',
     imgUrl: '/planet-01.png',
@@ -26,13 +32,19 @@ export const exploreWorlds = [
   },
 ];
 
-export const startingFeatures = [
+export const startingFeatures: string[] = [
   'Find a world that suits you and you want to enter',
   'Enter the world by reading basmalah to be safe',
   'No need to beat around the bush, just stay on the gas and have fun',
 ];
 
-export const newFeatures = [
+type TImage = {
+  imgUrl: string
+  title: string
+  subtitle: string
+}
+
+export const newFeatures: TImage[] = [
   {
     imgUrl: '/vrpano.svg',
     title: 'A new world',
@@ -47,7 +59,7 @@ export const newFeatures = [
   },
 ];
 
-export const insights = [
+export const insights: TImage[] = [
   {
     imgUrl: '/planet-06.png',
     title: 'The launch of the Metaverse makes Elon musk ketar-ketir',
@@ -68,7 +80,11 @@ export const insights = [
   },
 ];
 
-export const socials = [
+type TSocial = {
+  name: string
+  url: string
+}
+export const socials: TSocial[] = [
   {
     name: 'twitter',
     url: '/twitter.svg',
