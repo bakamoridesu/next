@@ -1,4 +1,6 @@
-export const navVariants = {
+import { Variants } from "framer-motion";
+
+export const navVariants: Variants = {
   hidden: {
     opacity: 0,
     y: -50,
@@ -68,7 +70,7 @@ export const textVariant = (delay: number) => ({
   },
 });
 
-export const textContainer = {
+export const textContainer: Variants = {
   hidden: {
     opacity: 0,
   },
@@ -78,7 +80,7 @@ export const textContainer = {
   }),
 };
 
-export const textVariant2 = {
+export const textVariant2: Variants = {
   hidden: {
     opacity: 0,
     y: 20,
@@ -150,7 +152,7 @@ export const zoomIn = (delay: number, duration: number) => ({
   },
 });
 
-export const footerVariants = {
+export const footerVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 50,
